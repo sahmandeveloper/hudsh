@@ -1,0 +1,23 @@
+name: Minetest Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Minetest
+        run: sudo apt-get install minetest
+
+      - name: Start Minetest Server
+        run: minetest --server
+
+    # Keep the server running for one week
+    timeout-minutes: 10080
+    
